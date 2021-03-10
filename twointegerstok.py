@@ -24,7 +24,7 @@ def addsToK(list, k):
     print(results)
 
 def main():
-    addsToK([10, 15, 3, 7], 17)
+    addsToK([10, 15, 18, 7], 25)
 
 if __name__ == "__main__": 
     main()
