@@ -84,4 +84,29 @@ def countingValleys(steps, path):
 #Time complexity is O(n) which is just counting every step. Unsure if I can optimize it any further, since we have to keep count relative to our starting point.
 #Space complexity is constant, since we're only keeping track of three variables.
 
-if __name__ == '__main__':
+#----------------------------------------------------------------------------------------------------------------------------------
+
+def rotLeft(a, d):
+    
+    newArr = a.copy()
+    rotationPointer = len(a) - d
+    
+    for value in a:
+        if rotationPointer >= len(a):
+            rotationPointer = 0
+        
+        newArr[rotationPointer] = value
+        rotationPointer += 1
+
+    return newArr
+
+
+def main():
+    
+    array = [1,2,3,4,5]
+    rotation = 4
+    
+    print(rotLeft(array, rotation))
+
+if __name__ == "__main__":
+    main()
