@@ -103,13 +103,81 @@ def rotLeft(a, d):
 
     return newArr
 
+#--------------------------------------------------------------------------------------------------------------------------------------
+
+# 2. Add Two Numbers
+# https://leetcode.com/problems/add-two-numbers/
+
+def lengthOfLongestSubstring(s):
+    currStr = ["", 0]
+    bestStr = ""
+    i = 0
+    while i < len(s):
+        if s[i] not in currStr:
+            currStr[0] = currStr[0] + s[i]
+            if len(currStr[0]) > len(bestStr):
+                bestStr = currStr[0]
+            i += 1
+        else:
+            currStr = ["", ]
+            currStr = currStr + s[i]
+        i += 1
+        
+    return len(bestStr)
+
+#--------------------------------------------------------------------------------------------------------------------------------------
+
+def ratioOfNegatives(arr):
+    neg = 0
+    pos = 0
+    zer = 0
+
+    for int in arr:
+        if int > 0:
+            pos += 1
+        elif int == 0:
+            zer += 1
+        else:
+            neg += 1
+    
+    print("{:.5f}".format(neg / len(arr)))
+    print("{:.5f}".format(pos / len(arr)))
+    print("{:.5f}".format(zer / len(arr)))
+
+#--------------------------------------------------------------------------------------------------------------------------------------
+#https://www.hackerrank.com/challenges/one-month-preparation-kit-lonely-integer/problem?h_l=interview&playlist_slugs%5B%5D=preparation-kits&playlist_slugs%5B%5D=one-month-preparation-kit&playlist_slugs%5B%5D=one-month-week-one
+
+def lonelyinteger(a):
+    b = []
+    for num in a:
+        if num not in b:
+            b.append(num)
+        elif num in b:
+            b.remove(num)
+    return b[0]
+
+#--------------------------------------------------------------------------------------------------------------------------------------
+#https://leetcode.com/problems/first-missing-positive/
+
+def firstMissingPositive(nums):
+    nums.sort()
+    i = 1
+    repeat = 0
+    for num in nums:
+        if num != i and num > 0 and num != repeat:
+            return i
+        elif num > 0 and num != repeat:
+            i += 1
+        repeat = num
+    return i
+
+
 
 def main():
     
-    array = [1,2,3,4,5]
-    rotation = 4
+    test = "abcabcbb"
     
-    print(rotLeft(array, rotation))
+    print(lengthOfLongestSubstring(test))
 
 if __name__ == "__main__":
     main()
